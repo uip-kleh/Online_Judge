@@ -1,0 +1,1 @@
+print("Black" if sum(list(map(int, input().split()))[-2:]) % 2 == 0 else "White")

@@ -1,0 +1,1 @@
+p 2 ** gets.chomp.to_i

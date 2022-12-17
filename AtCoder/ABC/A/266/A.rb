@@ -1,0 +1,1 @@
+puts (s = gets.chomp)[s.length / 2]

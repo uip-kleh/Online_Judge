@@ -1,0 +1,1 @@
+puts gets.chomp.split.map(&:to_i)[-2..-1].sum % 2 == 0 ? "Black" : "White"
