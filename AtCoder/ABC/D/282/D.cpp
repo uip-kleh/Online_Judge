@@ -63,43 +63,69 @@ struct UnionFind{
         siz.at(rx) += siz.at(ry);
         return true;
     }
+    int get_siz(int x){
+        return siz.at(root(x));
+    }
 };
 
-ll even, odd;
-ivv g(2e5+5);
-iv color(2e5+5, -1);
-bool is_binary = true;
+#define MAX 2e5
+
+bool is_binary=true;
+iv color(MAX, -1);
+ivv g(MAX);
 
 void dfs(int node, int c){
+    // basecase 
     if(color.at(node) != -1){
         if(color.at(node) != c) is_binary = false;
         return;
     }
-    
+
+    // step
     color.at(node) = c;
-    if(c % 2 == 0) even++;
-    else odd++;
     for(auto new_node: g.at(node)){
-        dfs(new_node, (c+1)%2);
+        dfs(new_node, (c+1) % 2);
     }
 }
 
 int main(){
     int n, m; cin >> n >> m;
+    UnionFind uf(n);
     rep(i, m){
-        int u, v; cin >> u >> v, u--, v--;
-        g.at(u).push_back(v);
+        int u, v; cin >> u >> v, --u, --v;
+        g.at(u).push_back(v); 
         g.at(v).push_back(u);
-    }
+        uf.unite(u, v);
+    }   
 
-    ll ans = n * (n - 1) / 2 - m;
     rep(i, n){
         if(color.at(i) != -1) continue;
-        even = 0, odd = 0;
         dfs(i, 0);
-        ans -= even * (even - 1) / 2;
-        ans -= odd * (odd - 1) / 2;
     }
 
-    cout << (is_binary ? ans : 0) << endl;
+    if(!is_binary){
+        cout << 0 << endl;
+        return 0;
+    }    
+
+    // 連結したグラフにおける色の個数
+    iv even(n, 0), odd(n, 0);
+    rep(i, n){
+        if(color.at(i) == 0) even.at(uf.root(i))++;
+        else odd.at(uf.root(i))++;
+    }
+
+    // cnt 
+    ll cnt = 0;
+    rep(i, n){
+        // 同じ連結の個数
+        if(color.at(i) == 0) cnt += odd.at(uf.root(i)) - g.at(i).size();
+        else cnt += even.at(uf.root(i)) - g.at(i).size();
+
+        // 異なる連結の個数
+        cnt += n - uf.get_siz(i);
+    }
+    cout << cnt / 2 << endl;
+
 }
+
