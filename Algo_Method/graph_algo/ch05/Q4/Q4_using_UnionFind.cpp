@@ -67,37 +67,17 @@ struct UnionFind{
 
 int main(){
     int n, m; cin >> n >> m;
-    ivv g(n);
+    UnionFind uf(2*n);
     rep(i, m){
         int a, b; cin >> a >> b;
-        g.at(a).push_back(b);
-        g.at(b).push_back(a);
+        uf.unite(a, b + n);
+        uf.unite(a + n, b);
     }
-
-    unordered_set<int> visited;
     rep(i, n){
-        if(visited.find(i) != visited.end()) continue;
-        queue<int> q;
-        q.push(i);
-        unordered_map<int, int> checked;
-        checked[i] = 0;
-        while(!q.empty()){
-            int node = q.front(); q.pop();
-            visited.insert(node);
-            for(auto new_node: g.at(node)){
-                if(checked.find(new_node) != checked.end()){
-                    if(checked[new_node] == checked[node]){
-                        cout << "No" << endl;
-                        return 0;
-                    }
-                    continue;
-                }
-                q.push(new_node);
-                checked[new_node] = (checked[node] + 1) % 2;
-            }
+        if(uf.is_same(i, i+n)){
+            cout << "No" << endl;
+            return 0;
         }
     }
-
-
     cout << "Yes" << endl;
 }
