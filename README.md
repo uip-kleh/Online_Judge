@@ -7,6 +7,22 @@ typedef vector<ll> iv;  // 一次元配列
 typedef vector<iv> ivv; // 二次元配列
 ```
 
+## グラフ理論
+### [木の最大安定集合](https://algo-method.com/tasks/978)
+- どの2頂点も辺で結ばれていないようなもの
+- DFSの帰りがけ順で、子頂点がひとつも選ばれていないければ選ぶ（貪欲法）
+- [ソースコード](https://algo-method.com/submissions/888438)
+
+### [木の最大マッチング](https://algo-method.com/tasks/979)
+- 重複なく二つの頂点を選ぶときの最大値
+- DFSの帰りがけ順で、頂点とその親が選ばれていないとき選ぶ（貪欲法）
+- [ソースコード](https://algo-method.com/submissions/888449)
+
+### [木の最小点被覆](https://algo-method.com/tasks/980)
+- いくつかの頂点を選び、すべての辺をおおうときの頂点の最小個数
+- DFSの帰りがけ順で、子頂点において選ばれていないものがあるとき選ぶ
+- [ソースコード](https://algo-method.com/submissions/888453)
+
 ## 整数問題
 
 ### [整数の乗数に対する繰り返し二乗法](https://qiita.com/ophhdn/items/e6451ec5983939ecbc5b)
