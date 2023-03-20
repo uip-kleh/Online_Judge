@@ -6,6 +6,9 @@ ctypedef long long ll;
 typedef vector<ll> iv;  // 一次元配列
 typedef vector<iv> ivv; // 二次元配列
 ```
+# 累積和アルゴリズム
+## [いもす法](https://imoz.jp/algorithms/imos_method.html)
+- 一次元、二次元の領域加算に用いる
 
 ## グラフ理論
 ### [木の最大安定集合](https://algo-method.com/tasks/978)
