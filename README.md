@@ -2,10 +2,20 @@
 参考にしたサイトとソースコード（主にC++）を記す。
 ```c++:
 #define rep(i, n) for(ll i=0; i < ll(n); i++)
+#define all(x) (x).begin(), (x).end()
 ctypedef long long ll;
 typedef vector<ll> iv;  // 一次元配列
 typedef vector<iv> ivv; // 二次元配列
 ```
+
+## [座標圧縮](https://drken1215.hatenablog.com/entry/2021/08/09/235400)
+- 配列のそれぞれの要素が、何番目に小さいかを求める
+- 二分探索でおこなうため$O(\log{N})$
+```c++:
+iv buf = {2, 5, 1, 2, 4, 2, 10, 21, 3}
+buf.erase(unique(all(buf)), buf.end()); // 重複要素を削除する
+```
+
 # 累積和アルゴリズム
 ## [いもす法](https://imoz.jp/algorithms/imos_method.html)
 - 一次元、二次元の領域加算に用いる
