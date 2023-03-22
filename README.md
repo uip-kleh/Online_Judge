@@ -12,12 +12,22 @@ typedef vector<iv> ivv; // 二次元配列
 - 条件を満たす区間のうち、最小・最大、数え上げ
 - $O(N^2)$を$O(N)$で実装できる
 
+# 座標
 ## [座標圧縮](https://drken1215.hatenablog.com/entry/2021/08/09/235400)
 - 配列のそれぞれの要素が、何番目に小さいかを求める
 - 二分探索でおこなうため$O(\log{N})$
+- vector内の重複要素を削除するプログラム
 ```c++:
 iv buf = {2, 5, 1, 2, 4, 2, 10, 21, 3}
 buf.erase(unique(all(buf)), buf.end()); // 重複要素を削除する
+```
+
+## マンハッタン距離の和
+- 中央値で絶対値最小となる
+- STLを使用
+```c++:
+nth_element(x.begin(), x.begin() + x.length() / 2, x.end());
+median = x.at(x.length() / 2);  // 中央値
 ```
 
 # 累積和アルゴリズム
