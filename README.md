@@ -8,6 +8,10 @@ typedef vector<ll> iv;  // 一次元配列
 typedef vector<iv> ivv; // 二次元配列
 ```
 
+## [尺取り虫法](https://qiita.com/drken/items/ecd1a472d3a0e7db8dce)
+- 条件を満たす区間のうち、最小・最大、数え上げ
+- $O(N^2)$を$O(N)$で実装できる
+
 ## [座標圧縮](https://drken1215.hatenablog.com/entry/2021/08/09/235400)
 - 配列のそれぞれの要素が、何番目に小さいかを求める
 - 二分探索でおこなうため$O(\log{N})$
