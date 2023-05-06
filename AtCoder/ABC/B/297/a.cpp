@@ -21,6 +21,14 @@ ll lcm(ll a, ll b){
     return a / gcd(a, b) * b;
 }
 
+bool is_prime(ll x){
+    if(x < 2) return 0;
+    else if(x == 2) return 1;
+    if(x%2 == 0) return 0;
+    for(ll i=0; i<x; i++) if(x%i == 0) return 0;
+    return 0;
+}
+
 ll digsum(ll n){
     ll res = 0;
     while(n > 0){
@@ -47,10 +55,16 @@ struct edge {
 };
 
 int main(){
-    ll x; cin >> x;
-    cout <<  [&](){
-        ll cnt = x / 11;
-        x %= 11;
-        return cnt * 2 + (x == 0 ? 0 : x <= 6 ? 1 : 2);
-    }() << endl;;
+    string s; cin >> s;
+    set<int> b;
+    iv k;
+    int r;
+    rep(i, s.length()){
+        if(s.at(i) == 'B') b.insert(i%2);
+        if(s.at(i) == 'K') r = i;
+        if(s.at(i) == 'R') k.push_back(i);
+    }
+    // cout << b.size() << endl;
+    cout << (b.size() == 2 and k.at(0) < r and r < k.at(1) ? "Yes" : "No") << endl;
 }
+
