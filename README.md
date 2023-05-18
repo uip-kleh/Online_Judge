@@ -106,3 +106,7 @@ ivv mat_pow(ivv a, ll b, ll mod){
     return res;
 }
 ```
+
+## セグメント木
+- [理論（簡単）](https://zenn.dev/magurofly/articles/3aa1084dfecce2)
+- [実装（難しい）](https://algo-logic.info/segment-tree/)
