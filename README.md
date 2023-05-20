@@ -34,9 +34,14 @@ nth_element(x.begin(), x.begin() + x.length() / 2, x.end());
 median = x.at(x.length() / 2);  // 中央値
 ```
 
-# 累積和アルゴリズム
+## 累積和アルゴリズム
 ## [いもす法](https://imoz.jp/algorithms/imos_method.html)
 - 一次元、二次元の領域加算に用いる
+
+## 動的計画法
+- [多項式・形式的べき級数数え上げとの対応付け](https://maspypy.com/%E5%A4%9A%E9%A0%85%E5%BC%8F%E3%83%BB%E5%BD%A2%E5%BC%8F%E7%9A%84%E3%81%B9%E3%81%8D%E7%B4%9A%E6%95%B0%E6%95%B0%E3%81%88%E4%B8%8A%E3%81%92%E3%81%A8%E3%81%AE%E5%AF%BE%E5%BF%9C%E4%BB%98%E3%81%91)
+    - 結構わかりやすい
+    - 部分和問題を多項式の分配法則・状態遷移からアプローチ
 
 ## グラフ理論
 ### [木の最大安定集合](https://algo-method.com/tasks/978)
