@@ -36,19 +36,21 @@ int main(){
     rep(i, MAX){
         if(isprime[i]) prime.push_back(i);
     }
-    cout << prime.size() << endl;
+    // cout << prime.size() << endl;
+    sort(all(prime));
 
     ll ans = 0;
     int n = prime.size();
-    for(int i=0; i<n; ++i){
-        for(int j=i+1; j<n and prime[i] * prime[i] <= N; ++j){
-            ll res = prime[i] * prime[i] * prime[j];
-            int k = prime.size() - 1;
-            while(res * prime[k] * prime[k] > N and k > j){
-                // cout << i << ' ' << j << ' ' << k << endl;
-                k--;
+    for(int i=0; i<n; i++){
+        if(prime[i] * prime[i] > N) break;
+        for(int j=i+1; j<n; j++){
+            if(prime[i] * prime[i] * prime[j] > N) break;
+            for(int k=j+1; k<n; k++){
+                if(prime[i] * prime[i] * prime[j] * prime[k] > N) break;
+                if(prime[i] * prime[i] * prime[j] * prime[k] * prime[k] > N) break;
+                // cout << prime[i] << ' ' << prime[j] << ' ' << prime[k] << '=' << prime[i] * prime[i] * prime[j] * prime[k] * prime[k] << endl;
+                ans++;
             }
-            ans += (k - j);            
         }
     }
     cout << ans << endl;
