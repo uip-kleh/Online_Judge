@@ -8,11 +8,16 @@
 constexpr long long MOD = 1e9 + 7;
 using namespace std;
 typedef long long ll;
-typedef vector<ll> iv;
+typedef vector<int> iv;
+typedef vector<ll> lv;
 typedef vector<bool> bv;
 typedef pair<ll, ll> ip;
 typedef vector<ip> pv;
 typedef vector<iv> ivv;
+typedef set<int> ist;
+typedef set<ll> lst;
+typedef map<int, int> imp;
+typedef map<ll, ll> lmp;
 ll gcd(ll a, ll b) {
     return b ? gcd(b, a % b) : a;
 }
@@ -59,35 +64,13 @@ iv dy = {0, -1, 0, 1};
 struct edge {
     int from, to, length;
 };
-void print(iv &a){
-    for(auto v: a) cout << v << ' ';
+
+void print(iv &a) {
+    for (auto v : a) cout << v << ' ';
     cout << endl;
 }
 
 int main() {
-    int N; cin >> N;
-    vector<string> S(N), sorted_S;
-    rep(i, N) cin >> S[i];
-    sorted_S = S;
-    sort(all(sorted_S));
-
-    // for(auto s: sorted_S) cout << s << endl;
-
-    map<string, int> ans;
-    rep(i, N-1){
-        int len = min((int)sorted_S[i].length(), (int)sorted_S[i+1].length());
-        rep(j, len){
-            if(sorted_S[i][j] != sorted_S[i+1][j]){
-                ans[sorted_S[i]] = max(ans[sorted_S[i]], (int)j);
-                ans[sorted_S[i+1]] = max(ans[sorted_S[i+1]], (int)j);
-                // cout << sorted_S[i] << '^' << sorted_S[i+1] << '=' << j << endl;
-                break;
-            }
-            if(j == len-1){
-                ans[sorted_S[i]] = max(ans[sorted_S[i]], (int)j+1);
-                ans[sorted_S[i+1]] = max(ans[sorted_S[i+1]], (int)j+1);
-            }
-        }
-    }
-    for(auto s: S) cout << ans[s] << endl;
+    int H, W; cin >> H >> W;
+    iv a(N), b(N); rep(i, N) cin >> a[i] >> b[i];
 }
